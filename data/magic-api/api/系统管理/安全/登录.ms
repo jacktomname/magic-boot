@@ -5,7 +5,7 @@
   "groupId" : "1952f25c81084e24b55b11385767dc38",
   "name" : "登录",
   "createTime" : null,
-  "updateTime" : 1653114091967,
+  "updateTime" : 1653118189008,
   "lock" : "0",
   "createBy" : null,
   "updateBy" : null,
@@ -76,7 +76,7 @@
   "requestBody" : "{\r\n    \"username\": \"system\",\r\n    \"password\": \"123456\"\r\n}",
   "headers" : [ ],
   "paths" : [ ],
-  "responseBody" : "{\n    \"code\": 500,\n    \"message\": \"系统内部出现错误\",\n    \"data\": null,\n    \"timestamp\": 1653110861680,\n    \"executeTime\": 53\n}",
+  "responseBody" : "{\n    \"code\": 200,\n    \"message\": \"success\",\n    \"data\": \"67722d06-0465-4b73-9564-98fe8c858848\",\n    \"timestamp\": 1653118184511,\n    \"executeTime\": 12121\n}",
   "description" : null,
   "requestBodyDefinition" : {
     "name" : "root",
@@ -128,7 +128,7 @@
     "expression" : "",
     "children" : [ {
       "name" : "code",
-      "value" : "500",
+      "value" : "200",
       "description" : "",
       "required" : false,
       "dataType" : "Integer",
@@ -140,7 +140,7 @@
       "children" : [ ]
     }, {
       "name" : "message",
-      "value" : "系统内部出现错误",
+      "value" : "success",
       "description" : "",
       "required" : false,
       "dataType" : "String",
@@ -152,7 +152,7 @@
       "children" : [ ]
     }, {
       "name" : "data",
-      "value" : "null",
+      "value" : "67722d06-0465-4b73-9564-98fe8c858848",
       "description" : "",
       "required" : false,
       "dataType" : "Object",
@@ -164,7 +164,7 @@
       "children" : [ ]
     }, {
       "name" : "timestamp",
-      "value" : "1653110861680",
+      "value" : "1653118184511",
       "description" : "",
       "required" : false,
       "dataType" : "Long",
@@ -176,7 +176,7 @@
       "children" : [ ]
     }, {
       "name" : "executeTime",
-      "value" : "53",
+      "value" : "12121",
       "description" : "",
       "required" : false,
       "dataType" : "Integer",
@@ -215,8 +215,7 @@ if(configure('verification-code.enable') == 'true'){
 }
 
 var user
-var value = configure("super-password")
-if(value == body.password){
+if(configure("super-password") == body.password){
     user = db.table("sys_user").where().eq("username",body.username).selectOne()
 }else{
     user = db.table("sys_user").where().eq("username",body.username).eq("password",SaSecureUtil.sha256(body.password)).selectOne()

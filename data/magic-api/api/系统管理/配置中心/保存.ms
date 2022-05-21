@@ -5,7 +5,7 @@
   "groupId" : "0295f2b4af9145f5a0ea29fa4b797214",
   "name" : "保存",
   "createTime" : null,
-  "updateTime" : 1653103640695,
+  "updateTime" : 1653119087020,
   "lock" : null,
   "createBy" : null,
   "updateBy" : null,
@@ -83,6 +83,18 @@
     "error" : null,
     "expression" : null,
     "children" : null
+  }, {
+    "name" : "configureKey",
+    "value" : "32323",
+    "description" : null,
+    "required" : false,
+    "dataType" : "String",
+    "type" : null,
+    "defaultValue" : null,
+    "validateType" : null,
+    "error" : null,
+    "expression" : null,
+    "children" : null
   } ],
   "options" : [ {
     "name" : "permission",
@@ -112,7 +124,7 @@
   "requestBody" : "",
   "headers" : [ {
     "name" : "token",
-    "value" : "3be69044-7c81-4882-9713-0d93254099d0",
+    "value" : "75812f57-129d-4714-a615-571142631484",
     "description" : null,
     "required" : true,
     "dataType" : "String",
@@ -124,7 +136,7 @@
     "children" : null
   } ],
   "paths" : [ ],
-  "responseBody" : "{\n    \"code\": 200,\n    \"message\": \"success\",\n    \"data\": \"486bb91ce700405d86a794d0471af8d9\",\n    \"timestamp\": 1653103444142,\n    \"executeTime\": 1693\n}",
+  "responseBody" : "{\n    \"code\": 200,\n    \"message\": \"success\",\n    \"data\": \"a500d23dd1274b4086d55a01a768caec\",\n    \"timestamp\": 1653119020859,\n    \"executeTime\": 1729\n}",
   "description" : null,
   "requestBodyDefinition" : null,
   "responseBodyDefinition" : {
@@ -164,7 +176,7 @@
       "children" : [ ]
     }, {
       "name" : "data",
-      "value" : "486bb91ce700405d86a794d0471af8d9",
+      "value" : "a500d23dd1274b4086d55a01a768caec",
       "description" : "",
       "required" : false,
       "dataType" : "Object",
@@ -176,7 +188,7 @@
       "children" : [ ]
     }, {
       "name" : "timestamp",
-      "value" : "1653103444142",
+      "value" : "1653119020859",
       "description" : "",
       "required" : false,
       "dataType" : "Long",
@@ -188,7 +200,7 @@
       "children" : [ ]
     }, {
       "name" : "executeTime",
-      "value" : "1693",
+      "value" : "1729",
       "description" : "",
       "required" : false,
       "dataType" : "Object",
@@ -202,4 +214,8 @@
   }
 }
 ================================
+import org.ssssssss.magicapi.modules.db.cache.SqlCache
+
+SqlCache.delete(`configure:${configureKey}${configureCondition}`)
+SqlCache.delete(`configure:${configureKey}`)
 return db.table('sys_configure').primary('id').saveOrUpdate(data)

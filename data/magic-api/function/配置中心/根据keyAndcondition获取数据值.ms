@@ -5,7 +5,7 @@
   "groupId" : "7e31035eb8d4471b9fc2923ea1d966c3",
   "name" : "根据keyAndcondition获取数据值",
   "createTime" : null,
-  "updateTime" : 1653112129130,
+  "updateTime" : 1653118303409,
   "lock" : null,
   "createBy" : null,
   "updateBy" : null,
@@ -40,7 +40,7 @@
   } ]
 }
 ================================
-var configure = db.selectOne("""
+var configure = db.cache(`configure:${configureKey}${configureCondition}`).selectOne("""
      select configure_value from sys_configure where configure_key = #{configureKey} 
      ?{configureCondition, and configure_condition = #{configureCondition}}
 """)

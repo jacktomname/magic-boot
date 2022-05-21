@@ -5,7 +5,7 @@
   "groupId" : "7e31035eb8d4471b9fc2923ea1d966c3",
   "name" : "根据key获取数据值",
   "createTime" : null,
-  "updateTime" : 1653111842949,
+  "updateTime" : 1653119091752,
   "lock" : null,
   "createBy" : null,
   "updateBy" : null,
@@ -28,7 +28,7 @@
   } ]
 }
 ================================
-var configure = db.selectOne("""
+var configure = db.cache(`configure:${configureKey}`).selectOne("""
      select configure_value from sys_configure where configure_key = #{configureKey}
 """)
 return configure == null ? "" : configure.get("configureValue")
