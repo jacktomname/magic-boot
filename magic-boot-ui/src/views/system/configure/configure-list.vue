@@ -33,8 +33,8 @@
               </el-form-item>
             </el-col>
             <el-col :span="12">
-              <el-form-item label="数据类型" prop="configureType">
-                <mb-select v-model="temp.configureType" type="CONFIGURE_TYPE"/>
+              <el-form-item label="配置类型" prop="configureType">
+                <mb-select v-model="temp.configureType" type="dict_type"/>
               </el-form-item>
             </el-col>
           </el-row>
@@ -96,7 +96,7 @@ const tableOptions = reactive({
       label: '条件',
       value: ''
     },
-    configureValue: {
+    configureKey: {
       type: 'input',
       label: '键值',
       value: ''
@@ -105,7 +105,8 @@ const tableOptions = reactive({
   cols: [
     {
       field: 'configureKey',
-      label: '配置键值'
+      label: '配置键值',
+      width: 200
     },
     {
       field: 'configureValue',
@@ -117,8 +118,8 @@ const tableOptions = reactive({
     },
     {
       field: 'configureType',
-      label: '数据类型',
-      dictType: 'CONFIGURE_TYPE'
+      label: '配置类型',
+      dictType: 'dict_type'
     },
     {
       field: 'configureCondition',

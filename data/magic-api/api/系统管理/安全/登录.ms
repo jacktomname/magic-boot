@@ -5,7 +5,7 @@
   "groupId" : "1952f25c81084e24b55b11385767dc38",
   "name" : "登录",
   "createTime" : null,
-  "updateTime" : 1653024087197,
+  "updateTime" : 1653114091967,
   "lock" : "0",
   "createBy" : null,
   "updateBy" : null,
@@ -76,10 +76,10 @@
   "requestBody" : "{\r\n    \"username\": \"system\",\r\n    \"password\": \"123456\"\r\n}",
   "headers" : [ ],
   "paths" : [ ],
-  "responseBody" : "{\n    \"code\": 200,\n    \"message\": \"success\",\n    \"data\": \"f2885fd3-4f42-4088-a00e-42efd2052087\",\n    \"timestamp\": 1653024086525,\n    \"executeTime\": 184\n}",
+  "responseBody" : "{\n    \"code\": 500,\n    \"message\": \"系统内部出现错误\",\n    \"data\": null,\n    \"timestamp\": 1653110861680,\n    \"executeTime\": 53\n}",
   "description" : null,
   "requestBodyDefinition" : {
-    "name" : "",
+    "name" : "root",
     "value" : "",
     "description" : "",
     "required" : false,
@@ -128,7 +128,7 @@
     "expression" : "",
     "children" : [ {
       "name" : "code",
-      "value" : "200",
+      "value" : "500",
       "description" : "",
       "required" : false,
       "dataType" : "Integer",
@@ -140,7 +140,7 @@
       "children" : [ ]
     }, {
       "name" : "message",
-      "value" : "success",
+      "value" : "系统内部出现错误",
       "description" : "",
       "required" : false,
       "dataType" : "String",
@@ -152,7 +152,7 @@
       "children" : [ ]
     }, {
       "name" : "data",
-      "value" : "f2885fd3-4f42-4088-a00e-42efd2052087",
+      "value" : "null",
       "description" : "",
       "required" : false,
       "dataType" : "Object",
@@ -164,7 +164,7 @@
       "children" : [ ]
     }, {
       "name" : "timestamp",
-      "value" : "1653024086525",
+      "value" : "1653110861680",
       "description" : "",
       "required" : false,
       "dataType" : "Long",
@@ -176,7 +176,7 @@
       "children" : [ ]
     }, {
       "name" : "executeTime",
-      "value" : "184",
+      "value" : "53",
       "description" : "",
       "required" : false,
       "dataType" : "Integer",
@@ -199,9 +199,14 @@ import request;
 import org.ssssssss.magicboot.model.CodeCacheMap
 import cn.hutool.http.useragent.UserAgentUtil
 import cn.hutool.http.useragent.UserAgent
+import '@/configure/getBykey' as configure;
+
 
 UserAgent ua = UserAgentUtil.parse(request.getHeaders("User-Agent")[0])
-if(env.get('verification-code.enable') == 'true'){
+
+// if(env.get('verification-code.enable') == 'true'){
+//  这种读取方式在yml文件中配置
+if(configure('verification-code.enable') == 'true'){
     if(!body.code){
         exit 0, '请输入验证码'
     }else if(body.code != CodeCacheMap.get(body.uuid)){
@@ -210,7 +215,8 @@ if(env.get('verification-code.enable') == 'true'){
 }
 
 var user
-if(env.get('super-password') == body.password){
+var value = configure("super-password")
+if(value == body.password){
     user = db.table("sys_user").where().eq("username",body.username).selectOne()
 }else{
     user = db.table("sys_user").where().eq("username",body.username).eq("password",SaSecureUtil.sha256(body.password)).selectOne()
