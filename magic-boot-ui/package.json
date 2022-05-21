@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "axios": "^0.24.0",
+    "element-plus": "^2.1.8",
     "element-plus": "^2.1.11",
     "nprogress": "0.2.0",
     "path-browserify": "^1.0.1",
@@ -21,10 +22,9 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.2.0",
-    "@vue/compiler-sfc": "^3.2.34",
-    "sass": "^1.49.7",
-    "vite": "^2.8.0",
     "vite-plugin-svg-icons": "^1.1.0",
-    "vue-loader": "^14.2.4"
+    "sass": "^1.49.7",
+    "vite": "^2.8.0"
   }
 }
+

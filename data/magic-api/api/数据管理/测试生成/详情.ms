@@ -4,6 +4,9 @@
   "script" : null,
   "groupId" : "7bdcc43555b9419caba2ee722e1aa2d3",
   "name" : "详情",
+  "createTime" : 1649260172025,
+  "updateTime" : null,
+  "lock" : null,
   "createTime" : null,
   "updateTime" : 1653097674260,
   "lock" : "0",
@@ -25,6 +28,7 @@
     "expression" : null,
     "children" : null
   } ],
+  "requestBody" : null,
   "requestBody" : "",
   "headers" : [ ],
   "paths" : [ ],

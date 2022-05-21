@@ -4,6 +4,8 @@
   "script" : null,
   "groupId" : "7bdcc43555b9419caba2ee722e1aa2d3",
   "name" : "删除",
+  "createTime" : 1649260172011,
+  "updateTime" : null,
   "createTime" : null,
   "updateTime" : 1653020118683,
   "lock" : null,
@@ -25,6 +27,7 @@
     "expression" : null,
     "children" : null
   } ],
+  "requestBody" : null,
   "requestBody" : "",
   "headers" : [ ],
   "paths" : [ ],
