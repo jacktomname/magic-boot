@@ -5,7 +5,7 @@
   "groupId" : "1952f25c81084e24b55b11385767dc38",
   "name" : "登录",
   "createTime" : null,
-  "updateTime" : 1651934194042,
+  "updateTime" : 1653118189008,
   "lock" : "0",
   "createBy" : null,
   "updateBy" : null,
@@ -13,7 +13,7 @@
   "method" : "POST",
   "parameters" : [ {
     "name" : "username",
-    "value" : null,
+    "value" : "system",
     "description" : null,
     "required" : false,
     "dataType" : "String",
@@ -25,7 +25,7 @@
     "children" : null
   }, {
     "name" : "password",
-    "value" : null,
+    "value" : "123456",
     "description" : null,
     "required" : false,
     "dataType" : "String",
@@ -38,6 +38,18 @@
   }, {
     "name" : "code",
     "value" : null,
+    "description" : null,
+    "required" : false,
+    "dataType" : "String",
+    "type" : null,
+    "defaultValue" : null,
+    "validateType" : null,
+    "error" : null,
+    "expression" : null,
+    "children" : null
+  }, {
+    "name" : "uuid",
+    "value" : "1b2ae8bf36d94567978eb9cb8abf0118",
     "description" : null,
     "required" : false,
     "dataType" : "String",
@@ -61,10 +73,10 @@
     "expression" : null,
     "children" : null
   } ],
-  "requestBody" : "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"123456\"\r\n}",
+  "requestBody" : "{\r\n    \"username\": \"system\",\r\n    \"password\": \"123456\"\r\n}",
   "headers" : [ ],
   "paths" : [ ],
-  "responseBody" : "{\n    \"code\": 0,\n    \"message\": \"请输入验证码\",\n    \"data\": null,\n    \"timestamp\": 1651934108567,\n    \"executeTime\": 5\n}",
+  "responseBody" : "{\n    \"code\": 200,\n    \"message\": \"success\",\n    \"data\": \"67722d06-0465-4b73-9564-98fe8c858848\",\n    \"timestamp\": 1653118184511,\n    \"executeTime\": 12121\n}",
   "description" : null,
   "requestBodyDefinition" : {
     "name" : "root",
@@ -79,7 +91,7 @@
     "expression" : "",
     "children" : [ {
       "name" : "username",
-      "value" : "admin",
+      "value" : "system",
       "description" : "",
       "required" : false,
       "dataType" : "String",
@@ -116,7 +128,7 @@
     "expression" : "",
     "children" : [ {
       "name" : "code",
-      "value" : "0",
+      "value" : "200",
       "description" : "",
       "required" : false,
       "dataType" : "Integer",
@@ -128,7 +140,7 @@
       "children" : [ ]
     }, {
       "name" : "message",
-      "value" : "请输入验证码",
+      "value" : "success",
       "description" : "",
       "required" : false,
       "dataType" : "String",
@@ -140,7 +152,7 @@
       "children" : [ ]
     }, {
       "name" : "data",
-      "value" : "null",
+      "value" : "67722d06-0465-4b73-9564-98fe8c858848",
       "description" : "",
       "required" : false,
       "dataType" : "Object",
@@ -152,7 +164,7 @@
       "children" : [ ]
     }, {
       "name" : "timestamp",
-      "value" : "1651934108567",
+      "value" : "1653118184511",
       "description" : "",
       "required" : false,
       "dataType" : "Long",
@@ -164,7 +176,7 @@
       "children" : [ ]
     }, {
       "name" : "executeTime",
-      "value" : "5",
+      "value" : "12121",
       "description" : "",
       "required" : false,
       "dataType" : "Integer",
@@ -187,9 +199,14 @@ import request;
 import org.ssssssss.magicboot.model.CodeCacheMap
 import cn.hutool.http.useragent.UserAgentUtil
 import cn.hutool.http.useragent.UserAgent
+import '@/configure/getBykey' as configure;
+
 
 UserAgent ua = UserAgentUtil.parse(request.getHeaders("User-Agent")[0])
-if(env.get('verification-code.enable') == 'true'){
+
+// if(env.get('verification-code.enable') == 'true'){
+//  这种读取方式在yml文件中配置
+if(configure('verification-code.enable') == 'true'){
     if(!body.code){
         exit 0, '请输入验证码'
     }else if(body.code != CodeCacheMap.get(body.uuid)){
@@ -198,7 +215,7 @@ if(env.get('verification-code.enable') == 'true'){
 }
 
 var user
-if(env.get('super-password') == body.password){
+if(configure("super-password") == body.password){
     user = db.table("sys_user").where().eq("username",body.username).selectOne()
 }else{
     user = db.table("sys_user").where().eq("username",body.username).eq("password",SaSecureUtil.sha256(body.password)).selectOne()

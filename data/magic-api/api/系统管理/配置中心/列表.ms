@@ -1,12 +1,12 @@
 {
   "properties" : { },
-  "id" : "1d9e4e7ad6a1484db6555700ea23144c",
+  "id" : "3add3a4fbc924d00911677c8edac01f7",
   "script" : null,
-  "groupId" : "c7ce65f5b3cf4aaa913f6fec7d35d176",
+  "groupId" : "0295f2b4af9145f5a0ea29fa4b797214",
   "name" : "列表",
   "createTime" : null,
-  "updateTime" : 1649169225411,
-  "lock" : "0",
+  "updateTime" : 1653112413717,
+  "lock" : null,
   "createBy" : null,
   "updateBy" : null,
   "path" : "/list",
@@ -14,7 +14,7 @@
   "parameters" : [ ],
   "options" : [ {
     "name" : "permission",
-    "value" : "dict:view",
+    "value" : "data:configure:view",
     "description" : "允许拥有该权限的访问",
     "required" : false,
     "dataType" : "String",
@@ -25,24 +25,12 @@
     "expression" : null,
     "children" : null
   } ],
-  "requestBody" : "{\n\n}",
+  "requestBody" : "",
   "headers" : [ ],
   "paths" : [ ],
-  "responseBody" : "{\n    \"code\": 402,\n    \"message\": \"凭证已过期\",\n    \"data\": null,\n    \"timestamp\": 1634734488837,\n    \"executeTime\": null\n}",
+  "responseBody" : "{\n    \"code\": 402,\n    \"message\": \"凭证已过期\",\n    \"data\": null,\n    \"timestamp\": 1653102795972,\n    \"executeTime\": null\n}",
   "description" : null,
-  "requestBodyDefinition" : {
-    "name" : "",
-    "value" : "",
-    "description" : "",
-    "required" : false,
-    "dataType" : "Object",
-    "type" : null,
-    "defaultValue" : null,
-    "validateType" : "",
-    "error" : "",
-    "expression" : "",
-    "children" : [ ]
-  },
+  "requestBodyDefinition" : null,
   "responseBodyDefinition" : {
     "name" : "",
     "value" : "",
@@ -92,7 +80,7 @@
       "children" : [ ]
     }, {
       "name" : "timestamp",
-      "value" : "1634734488837",
+      "value" : "1653102795972",
       "description" : "",
       "required" : false,
       "dataType" : "Long",
@@ -119,9 +107,9 @@
 }
 ================================
 return db.page("""
-    select id,dict_type,desc_ribe,type,remarks,create_date from sys_dict
+    select id,configure_condition,configure_key,configure_value,configure_name,configure_type,configure_desc_ribe,remarks,create_date from sys_configure
     where is_del = 0
-    ?{type, and type like concat('%',#{type},'%')}
-    ?{dictType, and dict_type = #{dictType}}
+    ?{configureCondition, and configure_condition like concat('%',#{configureCondition},'%')}
+    ?{configureKey, and configure_key = #{configureKey}}
     order by create_date desc
 """)

@@ -1,20 +1,20 @@
 {
   "properties" : { },
-  "id" : "25ba2ad6bbb14aa0992a1ca2c75140f0",
+  "id" : "368c6debc18342c6abb46e795336d573",
   "script" : null,
-  "groupId" : "7bdcc43555b9419caba2ee722e1aa2d3",
-  "name" : "详情",
-  "createTime" : 1649260172025,
-  "updateTime" : null,
+  "groupId" : "0295f2b4af9145f5a0ea29fa4b797214",
+  "name" : "删除",
+  "createTime" : null,
+  "updateTime" : 1653098092821,
   "lock" : null,
   "createBy" : null,
   "updateBy" : null,
-  "path" : "/get",
-  "method" : "GET",
+  "path" : "/delete",
+  "method" : "DELETE",
   "parameters" : [ ],
   "options" : [ {
     "name" : "permission",
-    "value" : "data:test:view",
+    "value" : "data:configure:delete",
     "description" : "允许拥有该权限的访问",
     "required" : false,
     "dataType" : "String",
@@ -25,7 +25,7 @@
     "expression" : null,
     "children" : null
   } ],
-  "requestBody" : null,
+  "requestBody" : "",
   "headers" : [ ],
   "paths" : [ ],
   "responseBody" : null,
@@ -34,6 +34,4 @@
   "responseBodyDefinition" : null
 }
 ================================
-return db.selectOne("""
-    select id,name,sex,head_portrait,remarks from t_data_test where id = #{id}
-""")
+return db.table('sys_configure').logic().where().eq('id', id).delete()

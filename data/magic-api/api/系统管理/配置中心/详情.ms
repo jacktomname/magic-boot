@@ -1,20 +1,20 @@
 {
   "properties" : { },
-  "id" : "566a8662385a42d381214b971873e98c",
+  "id" : "4b6d4d2d5b8c4292a41b2404fab70640",
   "script" : null,
-  "groupId" : "7bdcc43555b9419caba2ee722e1aa2d3",
-  "name" : "列表",
-  "createTime" : 1649260172000,
-  "updateTime" : null,
-  "lock" : null,
+  "groupId" : "0295f2b4af9145f5a0ea29fa4b797214",
+  "name" : "详情",
+  "createTime" : null,
+  "updateTime" : 1653105939624,
+  "lock" : "0",
   "createBy" : null,
   "updateBy" : null,
-  "path" : "/list",
-  "method" : "POST",
+  "path" : "/get",
+  "method" : "GET",
   "parameters" : [ ],
   "options" : [ {
     "name" : "permission",
-    "value" : "data:test:view",
+    "value" : "data:configure:view",
     "description" : "允许拥有该权限的访问",
     "required" : false,
     "dataType" : "String",
@@ -25,7 +25,7 @@
     "expression" : null,
     "children" : null
   } ],
-  "requestBody" : null,
+  "requestBody" : "",
   "headers" : [ ],
   "paths" : [ ],
   "responseBody" : null,
@@ -34,11 +34,6 @@
   "responseBodyDefinition" : null
 }
 ================================
-return db.page("""
-    select id,name,sex,head_portrait,remarks from t_data_test where 1=1
-    ?{name, and name like concat('%',#{name},'%') }
-    ?{sex, and sex = #{sex} }
-    ?{headPortrait, and head_portrait in(#{headPortrait.split(',')}) }
-    ?{remarks, and remarks <= #{remarks} }
-    and is_del = 0
+return db.selectOne("""
+     select id,configure_condition,configure_key,configure_value,configure_name,configure_type,configure_desc_ribe,remarks,create_date from sys_configure where id = #{id}
 """)
