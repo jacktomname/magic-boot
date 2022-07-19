@@ -13,6 +13,7 @@
             v-model="formData[col.name]"
             :item-label="col.label"
             v-bind="col.props"
+            :company-text = "col.companyText"
           />
         </el-form-item>
       </el-col>

@@ -1,5 +1,7 @@
 <template>
-  <el-input v-model="selectValue" :type="type" :placeholder="placeholder || (itemLabel && '请输入' + itemLabel)" v-bind="props.props" />
+  <el-input v-model="selectValue" :type="type" :placeholder="placeholder || (itemLabel && '请输入' + itemLabel)" v-bind="props.props" >
+    <template v-if="companyText" #append>{{companyText}}</template>
+  </el-input>
 </template>
 
 <script setup>
@@ -11,7 +13,8 @@ import {ref, watch} from 'vue'
     itemLabel: String,
     placeholder: String,
     type: String,
-    props: Object
+    props: Object,
+    companyText: String
   })
   selectValue.value = props.modelValue
   watch(() => props.modelValue, (value) => {
