@@ -17,7 +17,6 @@ import {ref, watch} from 'vue'
     companyText: String
   })
   selectValue.value = props.modelValue
-  emit('update:modelValue', props.modelValue)
   watch(() => props.modelValue, (value) => {
     selectValue.value = value
   })
