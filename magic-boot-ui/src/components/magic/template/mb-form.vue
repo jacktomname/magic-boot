@@ -6,13 +6,14 @@
     v-bind="form.props"
   >
     <el-row v-for="(row,i) in form.rows" :key="i" :gutter="row.gutter">
-      <el-col v-for="(col,j) in row.cols" :key="j" :span="col.span" v-bind="col.colProps">
+      <el-col v-for="(col,j) in row.cols" :key="j" :span="col.span" v-bind="col.colProps" v-show="!col.colHied ? true : false">
         <el-form-item :label="col.label" :label-width="col.labelWidth" :prop="col.name" v-bind="col.formItemProps">
           <component
             :is="!col.component ? 'mb-input' : col.component.startsWith('el-') || $global.dynamicComponentNames.indexOf(col.component) != -1 ? col.component : 'mb-' + col.component"
             v-model="formData[col.name]"
             :item-label="col.label"
             v-bind="col.props"
+            :company-text = "col.companyText"
           />
         </el-form-item>
       </el-col>
