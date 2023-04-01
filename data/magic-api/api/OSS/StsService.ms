@@ -5,7 +5,7 @@
   "groupId" : "a73658de49cc4c1683e807418e6a88ab",
   "name" : "StsService",
   "createTime" : null,
-  "updateTime" : 1680242045214,
+  "updateTime" : 1680320197000,
   "lock" : null,
   "createBy" : null,
   "updateBy" : null,
@@ -28,7 +28,7 @@
   "requestBody" : "",
   "headers" : [ ],
   "paths" : [ ],
-  "responseBody" : "{\n    \"code\": 200,\n    \"message\": \"success\",\n    \"data\": {\n        \"endpoint\": \"sts.cn-beijing.aliyuncs.com\",\n        \"accessKeyId\": \"LTAI5tFkMFBxSHMLCiim5FD8\",\n        \"accessKeySecret\": \"Il8v091T0m1XuphmgnpM8IPKsVZuX5\",\n        \"roleArn\": \"acs:ram::1059110352184086:role/ramosstest\",\n        \"roleSessionName\": \"SessionTest\"\n    },\n    \"timestamp\": 1680242016322,\n    \"executeTime\": 119\n}",
+  "responseBody" : "{\n    \"code\": 200,\n    \"message\": \"success\",\n    \"data\": {\n        \"accessKeyId\": \"STS.NV8kVN8NR9kcsWx2jPze3B4DQ\",\n        \"accessKeySecret\": \"6Sicvm1n2JhZLobWSDhA7ZLYtBNiX3K24sAiGxf9wndL\",\n        \"stsToken\": \"CAIS9AF1q6Ft5B2yfSjIr5WNIOz61ZFzjqmIcXHJ1moFduofrfHvszz2IHlIeHhrCOoct/g+lG1Y5vcelqJIRoReREvCUcZr8szhV9MP+NKT1fau5Jko1beHewHKeTOZsebWZ+LmNqC/Ht6md1HDkAJq3LL+bk/Mdle5MJqP+/UFB5ZtKWveVzddA8pMLQZPsdITMWCrVcygKRn3mGHdfiEK00he8TontPXmm5XHt0CH3AGimrEvyt6vcsT+Xa5FJ4xiVtq55utye5fa3TRYgxowr/4q0P0fqG2d543MUwQBs0TaKYjO+9hoNxRla7MmC1DqA1IBFWURGoABXu90o2TJtdJZbYegG+0pbMs78qGZppbfx2FsuWOntzD7S/DSOQyGvYkRzpGBFG191wsqLWirYafbpdnRGCW4r5uZ5MP6haf3+BZYTYcJ7jCUNZlkxLPJVrWkahQ2mTqNHR1g1/rug3hwhf5IkloBjMMEsWrHJlnwMI9xowY7XZI=\"\n    },\n    \"timestamp\": 1680242047286,\n    \"executeTime\": 907\n}",
   "description" : null,
   "requestBodyDefinition" : null,
   "responseBodyDefinition" : {
@@ -78,20 +78,8 @@
       "error" : "",
       "expression" : "",
       "children" : [ {
-        "name" : "endpoint",
-        "value" : "sts.cn-beijing.aliyuncs.com",
-        "description" : "",
-        "required" : false,
-        "dataType" : "String",
-        "type" : null,
-        "defaultValue" : null,
-        "validateType" : "",
-        "error" : "",
-        "expression" : "",
-        "children" : [ ]
-      }, {
         "name" : "accessKeyId",
-        "value" : "LTAI5tFkMFBxSHMLCiim5FD8",
+        "value" : "STS.NV8kVN8NR9kcsWx2jPze3B4DQ",
         "description" : "",
         "required" : false,
         "dataType" : "String",
@@ -103,7 +91,7 @@
         "children" : [ ]
       }, {
         "name" : "accessKeySecret",
-        "value" : "Il8v091T0m1XuphmgnpM8IPKsVZuX5",
+        "value" : "6Sicvm1n2JhZLobWSDhA7ZLYtBNiX3K24sAiGxf9wndL",
         "description" : "",
         "required" : false,
         "dataType" : "String",
@@ -114,20 +102,8 @@
         "expression" : "",
         "children" : [ ]
       }, {
-        "name" : "roleArn",
-        "value" : "acs:ram::1059110352184086:role/ramosstest",
-        "description" : "",
-        "required" : false,
-        "dataType" : "String",
-        "type" : null,
-        "defaultValue" : null,
-        "validateType" : "",
-        "error" : "",
-        "expression" : "",
-        "children" : [ ]
-      }, {
-        "name" : "roleSessionName",
-        "value" : "SessionTest",
+        "name" : "stsToken",
+        "value" : "CAIS9AF1q6Ft5B2yfSjIr5WNIOz61ZFzjqmIcXHJ1moFduofrfHvszz2IHlIeHhrCOoct/g+lG1Y5vcelqJIRoReREvCUcZr8szhV9MP+NKT1fau5Jko1beHewHKeTOZsebWZ+LmNqC/Ht6md1HDkAJq3LL+bk/Mdle5MJqP+/UFB5ZtKWveVzddA8pMLQZPsdITMWCrVcygKRn3mGHdfiEK00he8TontPXmm5XHt0CH3AGimrEvyt6vcsT+Xa5FJ4xiVtq55utye5fa3TRYgxowr/4q0P0fqG2d543MUwQBs0TaKYjO+9hoNxRla7MmC1DqA1IBFWURGoABXu90o2TJtdJZbYegG+0pbMs78qGZppbfx2FsuWOntzD7S/DSOQyGvYkRzpGBFG191wsqLWirYafbpdnRGCW4r5uZ5MP6haf3+BZYTYcJ7jCUNZlkxLPJVrWkahQ2mTqNHR1g1/rug3hwhf5IkloBjMMEsWrHJlnwMI9xowY7XZI=",
         "description" : "",
         "required" : false,
         "dataType" : "String",
@@ -140,7 +116,7 @@
       } ]
     }, {
       "name" : "timestamp",
-      "value" : "1680242016322",
+      "value" : "1680242047286",
       "description" : "",
       "required" : false,
       "dataType" : "Long",
@@ -152,7 +128,7 @@
       "children" : [ ]
     }, {
       "name" : "executeTime",
-      "value" : "119",
+      "value" : "907",
       "description" : "",
       "required" : false,
       "dataType" : "Integer",
@@ -175,6 +151,10 @@ import com.aliyuncs.profile.DefaultProfile;
 import com.aliyuncs.profile.IClientProfile;
 import response
 import env
+
+if(env.get('oss.enable') == 'false'){
+    exit 500, '请先配置oss信息'
+}
 
 // STS接入地址，例如sts.cn-hangzhou.aliyuncs.com。
 String endpoint = env.get("oss.endpoint");
