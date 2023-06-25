@@ -153,7 +153,7 @@ import response
 import env
 
 if(env.get('oss.enable') == 'false'){
-    exit 500, '请先配置oss信息'
+    exit 500, '使用oss上传组件前请先配置oss信息'
 }
 
 // STS接入地址，例如sts.cn-hangzhou.aliyuncs.com。
